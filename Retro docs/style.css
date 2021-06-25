@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+
+:root {
+  /* --background: rgba(0, 214, 170, .85); */
+  --background: #ffffff;
+  --about-background: blue;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: #ffffff;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+}
+
+.content {
+  height: 200vh;
+  background-image: url(//unsplash.it/1000/1000);
+  background-color: #333;
+  background-blend-mode: multiply;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
+
+/* navigation styles start here */
+
+header {
+  background: var(--background);
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+}
+
+/* changed this from the tutorial video to
+   allow it to gain focus, making it tabbable */
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, .75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+.logo{
+  width: 3rem
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--background);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: #131D3B;
+;
+  font-weight: 400;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / 3;
+  }
+
+  nav {
+    // all: unset; /* this causes issues with Edge, since it's unsupported */
+
+    /* the following lines are not from my video, but add Edge support */
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1,1);
+    background: none;
+    top: initial;
+    left: initial;
+    /* end Edge support stuff */
+
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 2em;
+    margin-bottom: 0;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: black;
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1,1);
+  }
+}
+
+/*=============== carousel section ===============*/
+
+
+HTML CSS JSResult Skip Results Iframe
+/* normal carousel NON HOVER styles */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    z-index: 10001;
+}
+
+.carousel-content {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    /* overflow: hidden; */
+    /* margin: 150px 0 70px; */
+    transition: 500ms;
+}
+
+@media(max-width: 1024px) {
+    .carousel-content {
+        /* margin: 100px 0 50px; */
+    }
+}
+
+@media(max-width: 800px) {
+    .carousel-content {
+        /* margin: 70px 0 30px; */
+    }
+}
+
+.carousel-content img {
+    height: 100vh;
+    /* min-width: 100vw;
+    max-width: 100vw; */
+    /* object-fit: cover; */
+    /* width: 100%; */
+}
+
+.carousel-content video {
+    min-width: 100vw;
+    max-width: 100vw;
+    min-height: 100vh;
+    object-fit: fill;
+}
+
+.carousel .carousel-control-left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel .carousel-control-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 10%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+/****========= About US ***********===========**/
+
+.about-us{
+  height: 100vh;
+  width: 100%;
+  background: white;
+  text-align: center;
+  padding: 4rem
+  position: relative;
+}
+
+.headings{
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+.about-us-content{
+  display: flex;
+  margin: 2rem auto;
+  width: 80%
+
+
+
+}
+
+.explanation{
+  padding: 2rem 4rem;
+  height: 35vh;
+  width: 70%;
+  background-color: #24659B;
+;
+  margin-right: 1rem;
+}
+
+.content-box{
+  width: 100%;
+  height: 5rem;
+
+}
+
+.company-spec{
+width: 30%;
+background-color:#0F3F65;
+padding: auto 2rem;
+
+}
+.spec-box{
+  height: 2rem;
+  width:inherit;
+  margin: auto auto;
+}
+
+
+/*============== Services ==========*/
+.services-container{
+  text-align: center;
+  height: 80vh;
+  background-image: "/Users/charlesnwachebelu/Desktop/Retro docs/assets/victor-garcia-KwT8fAZq6fI-unsplash.jpg";
+
+}
+/*======== quote ==========*/
+.quote-container{
+  background-color: blue;
+  height: 3.5rem;
+}
+
+
+/*=========== Focus *=============*/
+.focus-section{
+height: 80vh;
+}
+
+/*========= Projects ===========*/
+.project-section{
+  height: 100vh;
+}
+
+
+
+/*========== Promises ===========*/
+.promises-section{
+  height: 50vh;
+}
+
+
+
+/*============== footer=============*/
+footer{
+  background-color: blue;
+  height: 50vh
+}
