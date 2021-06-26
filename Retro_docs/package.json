@@ -1,0 +1,19 @@
+{
+  "name": "retro_docs",
+  "version": "1.0.0",
+  "description": "retro-group website",
+  "main": "index.js",
+  "scripts": {
+    "dev":"next start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "next build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "next": "^11.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
