@@ -4,7 +4,8 @@
   "description": "retro-group website",
   "main": "index.js",
   "scripts": {
-    "dev":"next start",
+    "start": "next start",
+    "dev": "next dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "next build"
   },
